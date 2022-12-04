@@ -1,0 +1,77 @@
+body{
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.25;
+  background-color: antiquewhite;
+}
+.buttonSection{
+    text-align: center;
+}
+.buttonSection button{
+    width: 200px;
+    height: 50px;
+    font-size: 15px;
+    border-style: none;
+    outline-style: none;
+    font-weight: 450;
+    background-color: #eb2416e8;
+    color: white;
+    border-radius: 25px;
+}
+.buttonSection button:hover{
+    background-color:rgb(180, 180, 180);
+    color: black;
+}
+.formSection{
+    display: grid;
+    width: 100vw;
+    height: auto;
+    place-items: center;
+}
+.formSection  .quizForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top:20px;
+}
+.rowDiv{
+    display: flex;
+    width: 80%;
+}
+.rowDiv > .sub{
+    margin-right: auto;
+    padding:10px 30px;
+    font-size: large;
+    border-radius: 20px;
+    border-style: none;
+    outline: none;
+    color: #ddd;
+    background-color: rgb(248, 71, 40);
+    cursor: pointer;
+}
+
+.rowDiv > .sub:hover{
+    color:#ffffff;
+    background-color: rgb(233, 27, 27);
+}
+
+.rowDiv > .reset{
+    padding:10px 30px;
+    padding:10px 30px;
+    font-size: large;
+    border-radius: 20px;
+    border-style: none;
+    outline: none;
+    color: #ffffff;
+    background-color: grey;
+}
+
+.rowDiv > .reset:hover{
+    color:#ffffff;
+    background-color: #6C757D;
+}
+.icon{
+    color:red;
+    font-size: 25px;
+    cursor: pointer;
+}
