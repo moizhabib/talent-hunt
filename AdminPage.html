@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/modal.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.HTML">TALENT HUNT</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="AdminPage.html">Admin
+                    <span class="sr-only">(current)</span>
+                </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="adminResult.html">Results</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="buttonSection mt-4">
+        <button id="btn" class="btn-black">Add New Question</button>
+    </div>
+    <div class="container">
+        <table class="table table-bordered table-responsive-sm my-4 table-sm table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col" aria-disabled="true"></th>
+                    <th scope="col">No:</th>
+                    <th scope="col">Question:</th>
+                    <th scope="col">Correct ans:</th>
+                    <th scope="col">Option:</th>
+                    <th scope="col">Option:</th>
+                    <th scope="col">Option:</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="formSection">
+        <div class="pop-Wrapper Hide">
+            <div class="popup">
+                <div class="content">
+                    <form class="quizForm">
+                        <div class="form-group">
+                            <label for="Name">Enter Question:</label>
+                            <input type="text" class="form-control ques" id="Email" name="question" placeholder="type question here">
+                        </div>
+                        <div class="form-group">
+                            <label for="Correct">Enter Correct answer</label>
+                            <input type="text" class="form-control" id="correct" name="correct" placeholder="Enter Correct">
+                        </div>
+                        <div class="form-group">
+                            <label for="Options">Enter Options</label>
+                            <input type="text" class="form-control" id="op1" name='options' placeholder="Enter Option">
+                        </div>
+                        <div class="form-group">
+                            <label for="Options">Enter Options</label>
+                            <input type="text" class="form-control" id="op2" name='options' placeholder="Enter Option">
+                        </div>
+                        <div class="form-group">
+                            <label for="Options">Enter Options</label>
+                            <input type="text" class="form-control" id="op3" name='options' placeholder="Enter Option">
+                        </div>
+                        <div class="rowDiv">
+                            <input type="submit" class="sub">
+                            <input type="reset" value="Clear" class="reset">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script src="firebaseDb.js"></script>
+<script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js" integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ==" crossorigin="anonymous"></script>
+<script>
+    const form = document.querySelector('form');
+    const popupWrapper = document.querySelector('.pop-Wrapper')
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        let options = [];
+        form.options.forEach(el => options.push(el.value.trim()))
+        console.log({
+            question: form.question.value,
+            correct: form.correct.value,
+            options: options
+        })
+        const uId = uuid.v4();
+        let obj = {
+            question: form.question.value.trim(),
+            correct: form.correct.value.trim(),
+            options: options,
+            id: uId
+        };
+        db.collection("Questions").doc(uId).set(obj).then(() => {
+                form.reset();
+                popupWrapper.classList.add('Hide')
+                alert("Question uploaded successfully!")
+            })
+            .catch((err) => {
+                console.error(err);
+                alert('Something went wrong from your side.')
+            });
+    })
+</script>
+
+</html>

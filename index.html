@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/common.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">TALENT HUNT</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="result.html">Results</a>
+                    </li>
+
+                    <li class="nav-item Login">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+
+                    <li class="nav-item Logout" onclick="firebaseLogout()">
+                        <a class="nav-link" href="login.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="intro py-3 bg-white text-center">
+        <div class="container">
+            <h2 class="text-dark display-3 my-4"><strong>TALENT HUNT</strong></h2>
+        </div>
+    </div>
+    <!--Result Section-->
+    <div class="result py-4 d-none bg-light text-center">
+        <div class="container lead">
+            <p>Your score is<span class="text-primary display-4 p-3">0%</span></p>
+        </div>
+    </div>
+    <!--Quiz section-->
+    <div class="quiz py-4 bg-dark ifLogged">
+        <div class="container">
+            <!--keeps thing in center-->
+            <divs style="display: flex; justify-content:space-between;">
+                <h2 class="my-3 text-white">On with the <span class="text-danger">Questions!</span></h2>
+                <h3 class="my-3 text-success">Name: <span class="userName text-white">- - -</span></h3>
+            </divs>
+            <!--form to submit answers-->
+            <form class="quiz-form text-white handleForm">
+                <div class="formContainer">
+                </div>
+                <div class="text-center">
+                    <input type="submit" value="submit" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="notLogged">
+
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+
+    <script src='firebaseDb.js'></script>
+    <script src="index.js"></script>
+    <script src="auth.js"></script>
+</body>
+<style>
+    .ifLogged {
+        display: none
+    }
+</style>
+
+</html>
